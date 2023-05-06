@@ -1,8 +1,13 @@
-const React = require('react')
-
+import React from 'react'
 
 const Home = () => {
-  return <div>I am the home component</div>
+  return (
+      <div>
+      <div>I am the home component. I am cool</div>
+        <button onClick={() => {
+          console.log('Clicked')
+        }}>Click me</button>
+      </div>)
 }
 
-module.exports = Home
+export default Home

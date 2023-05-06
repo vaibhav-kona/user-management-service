@@ -1,7 +1,8 @@
-import React from 'react'
+const React = require('react')
+
 
 const Home = () => {
   return <div>I am the home component</div>
 }
 
-export default Home
+module.exports = Home

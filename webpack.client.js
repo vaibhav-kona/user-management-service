@@ -1,16 +1,13 @@
 const path = require('path')
 
 module.exports = {
-  // Target env on where to run the output code
-  target: 'node',
-
   // Root file for server application
-  entry: './src/index.js',
+  entry: './src/client/client.js',
 
   // Output path
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'public')
   },
 
   // babel setup - need to be same on both server and client webpack

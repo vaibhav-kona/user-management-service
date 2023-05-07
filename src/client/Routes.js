@@ -1,5 +1,5 @@
 import Home from './components/Home'
-import Users from './components/Users'
+import Users, { loadData as usersLoadData } from './components/Users'
 
 // const Routes = () => {
 //   return (
@@ -17,6 +17,7 @@ const routes = [
     exact: true
   },
   {
+    loadData: usersLoadData,
     path: '/users',
     component: Users
   }

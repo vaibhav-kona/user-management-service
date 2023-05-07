@@ -5,8 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import routes from './Routes'
 import { renderRoutes } from 'react-router-config'
+import routes from './Routes'
 
 // Reducers
 import reducers from './reducers'

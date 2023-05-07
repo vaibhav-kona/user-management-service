@@ -1,13 +1,24 @@
+import 'babel-polyfill'
 import express from 'express'
 import renderer from './helpers/renderer'
+import createStore from './helpers/createStore'
+import { matchRoutes } from 'react-router-config'
+import routes from './client/Routes'
 
 const app = express()
 
 app.use(express.static('public'))
 
 app.get('*', (req, res) => {
-  console.log('Hello')
-  res.send(renderer(req))
+  const store = createStore()
+  const promises = matchRoutes(routes, req.path).map(({ route }) => {
+    return route.loadData ? route.loadData(store) : null
+  })
+  console.log({ promises })
+  Promise.all(promises).then((results) => {
+    console.log({ results })
+    res.send(renderer(req, store))
+  })
 })
 
 app.listen(3000, () => {

@@ -1,11 +1,16 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import Home from '../client/components/Home'
+import Routes from '../client/Routes'
+import { StaticRouter } from 'react-router-dom'
 
-export default () => {
-  const content = renderToString(<Home/>)
+export default (req) => {
+  const content = renderToString(
+    <StaticRouter location={req.path} context={{}}>
+      <Routes/>
+    </StaticRouter>
+  )
 
-  const html = `
+  return ` 
     <html lang="en">
         <head><title>User Management</title></head>
         <body>
@@ -14,5 +19,4 @@ export default () => {
         </body>
     </html>
   `
-  return html
 }

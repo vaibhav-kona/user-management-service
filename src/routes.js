@@ -1,25 +1,15 @@
 import Home from './client/pages/Home'
-import Users, { loadData as usersLoadData } from './client/pages/Users'
-
-// const Routes = () => {
-//   return (
-//     <div>
-//       <Route exact path="/" component={Home}/>
-//       <Route exact path="/users" component={Users}/>
-//     </div>
-//   )
-// }
+import Users from './client/pages/Users'
 
 const routes = [
   {
+    ...Home,
     path: '/',
-    component: Home,
     exact: true
   },
   {
-    loadData: usersLoadData,
-    path: '/users',
-    component: Users
+    ...Users,
+    path: '/users'
   }
 ]
 

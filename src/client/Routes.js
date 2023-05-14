@@ -1,5 +1,5 @@
-import Home from './components/Home'
-import Users, { loadData as usersLoadData } from './components/Users'
+import Home from './pages/Home'
+import Users, { loadData as usersLoadData } from './pages/Users'
 
 // const Routes = () => {
 //   return (

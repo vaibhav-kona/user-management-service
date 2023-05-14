@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { renderRoutes } from 'react-router-config'
 import Header from './components/Header'
 import { fetchCurrentUser } from './actions'
+import { connect } from 'react-redux'
 
-const App = ({ route }) => {
-  return <div>
-    <Header/>
-    {renderRoutes(route.routes)}
-  </div>
+class App extends Component {
+  componentDidMount () {
+    this.props.fetchCurrentUser()
+  }
+
+  render () {
+    return (
+      <div>
+        <Header/>
+        {renderRoutes(this.props.route.routes)}
+      </div>
+    )
+  }
 }
 
 export default {
-  component: App,
+  component: connect(() => {}, { fetchCurrentUser })(App),
   loadData: (store) => {
     return store.dispatch(fetchCurrentUser())
   }

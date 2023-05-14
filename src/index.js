@@ -14,9 +14,7 @@ app.get('*', (req, res) => {
   const promises = matchRoutes(routes, req.path).map(({ route }) => {
     return route.loadData ? route.loadData(store) : null
   })
-  console.log({ promises })
   Promise.all(promises).then((results) => {
-    console.log({ results })
     res.send(renderer(req, store))
   })
 })

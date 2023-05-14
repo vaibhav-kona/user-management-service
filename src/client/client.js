@@ -11,7 +11,7 @@ import routes from './Routes'
 // Reducers
 import reducers from './reducers'
 
-const store = createStore(reducers, {}, applyMiddleware(thunk))
+const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk))
 
 ReactDom.hydrate(
   <Provider store={store}>

@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 
 class Users extends Component {
   componentDidMount () {
+    // This is still needed as if there is client side routing on the browser,
+    // the initial state for users won't be present and this page will show empty data
     this.props.fetchUsers()
   }
 
   render () {
-    console.log({ aaa: this.props.users })
     return (
       <div>
         Users are displayed here

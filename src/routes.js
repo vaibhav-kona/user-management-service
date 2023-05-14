@@ -1,15 +1,21 @@
 import Home from './client/pages/Home'
 import Users from './client/pages/Users'
+import App from './client/App'
 
 const routes = [
   {
-    ...Home,
-    path: '/',
-    exact: true
-  },
-  {
-    ...Users,
-    path: '/users'
+    ...App,
+    routes: [
+      {
+        ...Home,
+        path: '/',
+        exact: true
+      },
+      {
+        ...Users,
+        path: '/users'
+      }
+    ]
   }
 ]
 

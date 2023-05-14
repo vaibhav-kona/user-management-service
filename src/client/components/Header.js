@@ -8,14 +8,14 @@ const Header = (props) => {
     : <a href={'/api/auth/google'}>Login</a>
 
   return (
-    <div>
-      <Link to={'/'}> React SSR</Link>
+    <nav>
+      <Link to={'/'}>User Management</Link>
       <div>
-        <Link to={'/users'}>Users</Link>
-        <Link to={'/admins'}>Admins</Link>
+        <Link to={'/users'} style={{ margin: '0 8px 0 0' }}>Users</Link>
+        <Link to={'/admins'} style={{ margin: '0 8px 0 0' }}>Admins</Link>
         {authButton}
       </div>
-    </div>
+    </nav>
   )
 }
 

@@ -12,7 +12,7 @@ class Users extends Component {
   render () {
     return (
       <div>
-        Users are displayed here
+        <h4>Users are displayed here</h4>
         <ul>
           {(this.props.users).map((user) => (
             <li key={user.id}>{user.name}</li>

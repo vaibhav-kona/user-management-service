@@ -12,7 +12,7 @@ class Users extends Component {
   render () {
     return (
       <div>
-        Users are displayed here
+        <h4>Users are displayed here</h4>
         <ul>
           {(this.props.users).map((user) => (
             <li key={user.id}>{user.name}</li>
@@ -31,4 +31,7 @@ export function loadData (store) {
   return store.dispatch(fetchUsers())
 }
 
-export default connect(mapStateToProps, { fetchUsers })(Users)
+export default {
+  component: connect(mapStateToProps, { fetchUsers })(Users),
+  loadData
+}

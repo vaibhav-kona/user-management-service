@@ -1,5 +1,5 @@
-import Home from './pages/Home'
-import Users, { loadData as usersLoadData } from './pages/Users'
+import Home from './client/pages/Home'
+import Users, { loadData as usersLoadData } from './client/pages/Users'
 
 // const Routes = () => {
 //   return (

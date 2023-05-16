@@ -24,7 +24,10 @@ app.get('*', (req, res) => {
     return route.loadData ? route.loadData(store) : null
   })
   Promise.all(promises).then((results) => {
-    res.send(renderer(req, store))
+    const context = {}
+    const rendered = renderer(req, store, context)
+    const status = context.notFound ? 404 : 200
+    res.status(status).send(rendered)
   })
 })
 

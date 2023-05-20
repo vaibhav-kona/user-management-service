@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { fetchUsers } from '../actions'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 class Users extends Component {
   componentDidMount () {
@@ -9,9 +10,19 @@ class Users extends Component {
     this.props.fetchUsers()
   }
 
+  head () {
+    return (
+    <Helmet>
+      <title>{`${this.props.users.length} Users Loaded`}</title>
+      <meta property={'og:title'} content={'User'}></meta>
+    </Helmet>
+    )
+  }
+
   render () {
     return (
       <div>
+        {this.head()}
         <h4>Users are displayed here</h4>
         <ul>
           {(this.props.users).map((user) => (

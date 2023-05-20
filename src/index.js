@@ -34,6 +34,9 @@ app.get('*', (req, res) => {
     const context = {}
     const rendered = renderer(req, store, context)
     const status = context.notFound ? 404 : 200
+    if (context.url) {
+      return res.redirect(302, context.url)
+    }
     res.status(status).send(rendered)
   })
 })

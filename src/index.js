@@ -23,8 +23,18 @@ app.get('*', (req, res) => {
   const promises = matchRoutes(routes, req.path).map(({ route }) => {
     return route.loadData ? route.loadData(store) : null
   })
-  Promise.all(promises).then((results) => {
-    res.send(renderer(req, store))
+  const wrappedPromises = promises.map((pr) => {
+    if (pr) {
+      return new Promise((resolve) => {
+        pr.then((resolve)).catch(resolve)
+      })
+    }
+  })
+  Promise.all(wrappedPromises).then((results) => {
+    const context = {}
+    const rendered = renderer(req, store, context)
+    const status = context.notFound ? 404 : 200
+    res.status(status).send(rendered)
   })
 })
 

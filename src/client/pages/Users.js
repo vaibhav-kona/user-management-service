@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import { fetchUsers } from '../actions'
 import { connect } from 'react-redux'
 
@@ -27,7 +27,7 @@ function mapStateToProps (state) {
   return { users: state.users }
 }
 
-export function loadData (store) {
+function loadData (store) {
   return store.dispatch(fetchUsers())
 }
 
